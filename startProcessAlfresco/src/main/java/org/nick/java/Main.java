@@ -42,7 +42,7 @@ public class Main {
     private static void createProcess(String alfrescoTicket, String taskAssignee, String processDefinitionKey){
         Variables variables = new Variables(true,"0",taskAssignee);
         Process process = new Process(processDefinitionKey,variables);
-        String       postUrl       = "http://192.168.1.236:8080/alfresco/api/-default-/public/workflow/versions/1/processes?alf_ticket="+alfrescoTicket;// put in your url
+        String       postUrl       = "http://localhost:8080/alfresco/api/-default-/public/workflow/versions/1/processes?alf_ticket="+alfrescoTicket;// put in your url
         Gson gson          = new Gson();
         HttpClient httpClient    = HttpClientBuilder.create().build();
         HttpPost post          = new HttpPost(postUrl);
@@ -71,7 +71,7 @@ public class Main {
     // HTTP GET request
     private static String login() throws Exception {
 
-        String url = "http://192.168.1.236:8080/alfresco/s/api/login?u=admin&pw=admin";
+        String url = "http://localhost:8080/alfresco/s/api/login?u=admin&pw=admin";
         CloseableHttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(url);
         // add request header

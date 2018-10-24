@@ -39,7 +39,7 @@ public class Main {
 
     private static void createUser(String alfrescoTicket){
         User user = new User("nick2","nick2","nick2","nick2","nick2","nick2");
-        String  postUrl  = "http://192.168.1.236:8080/alfresco/s/api/people?alf_ticket="+alfrescoTicket;// put in your url
+        String  postUrl  = "http://localhost:8080/alfresco/s/api/people?alf_ticket="+alfrescoTicket;// put in your url
         Gson gson  = new Gson();
         HttpClient  httpClient  = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost(postUrl);
@@ -63,7 +63,7 @@ public class Main {
 
     private static void createGroup(String alfrescoTicket){
         Group group = new Group("groupId1","groupDisplayName1");
-        String       postUrl       = "http://192.168.1.236:8080/alfresco/api/-default-/public/alfresco/versions/1/groups?alf_ticket="+alfrescoTicket;// put in your url
+        String       postUrl       = "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/groups?alf_ticket="+alfrescoTicket;// put in your url
         Gson gson          = new Gson();
         HttpClient   httpClient    = HttpClientBuilder.create().build();
         HttpPost     post          = new HttpPost(postUrl);
@@ -89,7 +89,7 @@ public class Main {
     // HTTP GET request
     private static String login() throws Exception {
 
-        String url = "http://192.168.1.236:8080/alfresco/s/api/login?u=admin&pw=admin";
+        String url = "http://localhost:8080/alfresco/s/api/login?u=admin&pw=admin";
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(url);

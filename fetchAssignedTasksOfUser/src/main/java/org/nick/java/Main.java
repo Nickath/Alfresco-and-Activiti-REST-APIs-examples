@@ -35,7 +35,7 @@ public class Main {
 
     private static String fetchTasksAssignedToUser(String assigneeFilter, String alfrescoTicket){
         String strReponse = "";
-        String getUrl = "http://192.168.1.236:8080/alfresco/api/-default-/public/workflow/versions/1/tasks?"+ assigneeFilter +"&alf_ticket="+alfrescoTicket;
+        String getUrl = "http://localhost:8080/alfresco/api/-default-/public/workflow/versions/1/tasks?"+ assigneeFilter +"&alf_ticket="+alfrescoTicket;
         System.out.println("=============== GET REQUEST ==================");
         System.out.println(getUrl);
         CloseableHttpClient client = HttpClientBuilder.create().build();
@@ -63,7 +63,7 @@ public class Main {
     // HTTP GET request
     private static String login() throws Exception {
 
-        String url = "http://192.168.1.236:8080/alfresco/s/api/login?u=admin&pw=admin";
+        String url = "http://localhost:8080/alfresco/s/api/login?u=admin&pw=admin";
         CloseableHttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(url);
         // add request header
