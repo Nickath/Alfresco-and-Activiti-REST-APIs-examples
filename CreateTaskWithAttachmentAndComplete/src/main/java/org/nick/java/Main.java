@@ -192,49 +192,11 @@ public class Main {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+     /**
+     * 
+     * @param httpResponse the http response
+     * @return the httpresponse to string
+     */
     private static String gerResponseToString(HttpResponse httpResponse){
         BufferedReader rd = null;
         String res = null;
