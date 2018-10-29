@@ -27,7 +27,7 @@ public class Main {
     public static void main(String[] args){
 
         String nodeId = "23c0c3cb-aa81-486a-9270-9623829903a0";
-        String filePath = "C:\\file.doc6.pdf";
+        String filePath = "C:\\Users\\file.doc8.pdf";
         try {
             String alfrescoTicket = login();
             File file = new File(filePath);
@@ -41,15 +41,16 @@ public class Main {
         String  postUrl  = "http://localhost:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/"+nodeId+"/children?alf_ticket="+alfrescoTicket;// put in your url
         System.out.println(postUrl);
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(postUrl);
-
-        MultipartEntity entity = new MultipartEntity();
-        entity.addPart("filedata", new FileBody(file));
+        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+        builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+        FileBody fileBody = new FileBody(file);
+        builder.addPart("filedata", fileBody);
+        HttpEntity entity = builder.build();
         post.setEntity(entity);
-
         try {
-            HttpResponse response = client.execute(post);
+            HttpResponse response = httpClient.execute(post);
+            System.out.println("RESPONSE STATUS =================> " +response.getStatusLine());
             String res = gerResponseToString(response);
             System.out.println(res);
         } catch (IOException e) {
